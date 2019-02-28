@@ -1,0 +1,10 @@
+name: Movies
+form: $/paulallen/movies/models/movie/fields.yaml
+modelClass: PaulAllen\Movies\Models\Movie
+defaultRedirect: paulallen/movies/movies
+create:
+    redirect: 'paulallen/movies/movies/update/:id'
+    redirectClose: paulallen/movies/movies
+update:
+    redirect: paulallen/movies/movies
+    redirectClose: paulallen/movies/movies

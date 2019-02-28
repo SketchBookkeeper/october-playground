@@ -1,0 +1,11 @@
+plugin:
+    name: 'paulallen.movies::lang.plugin.name'
+    description: 'paulallen.movies::lang.plugin.description'
+    author: 'Paul Allen'
+    icon: oc-icon-video-camera
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Movies
+        url: paulallen/movies/movies
+        icon: icon-video-camera

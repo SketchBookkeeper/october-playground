@@ -1,0 +1,14 @@
+fields:
+    name:
+        label: 'Movie Title'
+        span: full
+        type: text
+    description:
+        label: 'paulallen.movies::lang.plugin.description'
+        size: ''
+        span: full
+        type: richeditor
+    year:
+        label: Year
+        span: full
+        type: text

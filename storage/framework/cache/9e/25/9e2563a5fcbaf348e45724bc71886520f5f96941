@@ -1,0 +1,40 @@
+1551312534a:1:{s:11:"default.htm";a:6:{s:8:"fileName";s:11:"default.htm";s:7:"content";s:562:"description = "Default layout"
+==
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ this.page.title }}</title>
+    <link rel="stylesheet" href="{{ 'assets/dist/app.css'|theme }}">
+</head>
+<body class="fill-gray-lighter">
+    <header>
+        {% partial 'header' %}
+    </header>
+
+    <main id="layout-content" class="medium-wrapper xs-mx-auto xs-p1">
+        {% page %}
+    </main>
+</body>
+</html>
+";s:5:"mtime";i:1551303915;s:6:"markup";s:527:"<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ this.page.title }}</title>
+    <link rel="stylesheet" href="{{ 'assets/dist/app.css'|theme }}">
+</head>
+<body class="fill-gray-lighter">
+    <header>
+        {% partial 'header' %}
+    </header>
+
+    <main id="layout-content" class="medium-wrapper xs-mx-auto xs-p1">
+        {% page %}
+    </main>
+</body>
+</html>";s:4:"code";N;s:11:"description";s:14:"Default layout";}}

@@ -1,0 +1,10 @@
+columns:
+    name:
+        label: 'paulallen.movies::lang.plugin.name'
+        type: text
+        searchable: true
+        sortable: true
+    year:
+        label: Year
+        type: number
+        sortable: true
