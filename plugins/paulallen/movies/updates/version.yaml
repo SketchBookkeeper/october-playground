@@ -3,3 +3,9 @@
 1.0.2:
     - 'Created table paulallen_movies_'
     - builder_table_create_paulallen_movies_.php
+1.0.3:
+    - 'Updated table paulallen_movies_'
+    - builder_table_update_paulallen_movies_.php
+1.0.4:
+    - 'Updated table paulallen_movies_'
+    - builder_table_update_paulallen_movies__2.php

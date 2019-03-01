@@ -8,7 +8,7 @@ use Model;
 class Movie extends Model
 {
     use \October\Rain\Database\Traits\Validation;
-    
+
     /*
      * Disable timestamps by default.
      * Remove this line if timestamps are defined in the database table.
@@ -25,5 +25,19 @@ class Movie extends Model
      * @var array Validation rules
      */
     public $rules = [
+    ];
+
+    /**
+     * @var array Single Attachments
+     */
+    public $attachOne = [
+        'poster' => 'System\Models\File'
+    ];
+
+    /**
+     * @var array Multiple Attachments
+     */
+    public $attachMany = [
+        'movie_gallery' => 'System\Models\File'
     ];
 }

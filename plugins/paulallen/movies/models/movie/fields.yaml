@@ -1,14 +1,39 @@
 fields:
     name:
         label: 'Movie Title'
-        span: full
+        span: left
+        type: text
+    slug:
+        label: Slug
+        span: auto
+        preset:
+            field: name
+            type: slug
         type: text
     description:
         label: 'paulallen.movies::lang.plugin.description'
-        size: ''
+        size: large
         span: full
         type: richeditor
     year:
         label: Year
-        span: full
+        span: left
         type: text
+    poster:
+        label: Poster
+        mode: file
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: auto
+        type: fileupload
+    movie_gallery:
+        label: 'Movie Gallery'
+        mode: file
+        useCaption: true
+        thumbOptions:
+            mode: crop
+            extension: auto
+        span: full
+        type: fileupload
