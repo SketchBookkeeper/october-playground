@@ -1,0 +1,10 @@
+name: Genres
+form: $/paulallen/movies/models/genre/fields.yaml
+modelClass: PaulAllen\Movies\Models\Genre
+defaultRedirect: paulallen/movies/genres
+create:
+    redirect: 'paulallen/movies/genres/update/:id'
+    redirectClose: paulallen/movies/genres
+update:
+    redirect: paulallen/movies/genres
+    redirectClose: paulallen/movies/genres

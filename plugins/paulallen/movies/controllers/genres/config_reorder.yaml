@@ -1,0 +1,4 @@
+title: Genres
+modelClass: PaulAllen\Movies\Models\Genre
+toolbar:
+    buttons: reorder_toolbar

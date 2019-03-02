@@ -9,3 +9,8 @@ navigation:
         label: Movies
         url: paulallen/movies/movies
         icon: icon-video-camera
+        sideMenu:
+            side-menu-item:
+                label: Genres
+                url: paulallen/movies/genres
+                icon: icon-ticket

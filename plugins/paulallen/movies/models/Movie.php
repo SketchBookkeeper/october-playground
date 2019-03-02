@@ -27,6 +27,16 @@ class Movie extends Model
     public $rules = [
     ];
 
+    // Relationships
+
+    public $belongsToMany = [
+        'genres' => [
+            'PaulAllen\Movies\Models\Genre',
+            'table' => 'paulallen_movies_movies_genres_',
+            'order' => 'genre_title'
+        ]
+    ];
+
     /**
      * @var array Single Attachments
      */

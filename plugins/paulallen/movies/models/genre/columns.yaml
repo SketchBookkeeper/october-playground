@@ -1,0 +1,10 @@
+columns:
+    genre_title:
+        label: 'Genre Title'
+        type: text
+        searchable: true
+        sortable: true
+    slug:
+        label: Slug
+        type: text
+        sortable: true
