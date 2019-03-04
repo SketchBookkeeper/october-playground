@@ -8,6 +8,13 @@ class Plugin extends PluginBase
     {
     }
 
+    public function registerFormWidgets()
+    {
+        return [
+            'PaulAllen\Movies\Widgets\ActorBox' => 'actorbox'
+        ];
+    }
+
     public function registerSettings()
     {
     }

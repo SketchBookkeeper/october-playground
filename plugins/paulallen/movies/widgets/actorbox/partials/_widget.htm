@@ -1,0 +1,18 @@
+
+<div>
+    <select name="" class="s2"  multiple>
+        <option value="1">Mark</option>
+        <option value="2">Carrie</option>
+        <option value="3">Greg</option>
+    </select>
+</div>
+
+<script>
+    $(document).on('render', function() {
+        $('.s2').select2({
+            placeholder: 'Add Actors',
+            tags: true,
+            width: '100%',
+        });
+    });
+</script>

@@ -58,3 +58,7 @@ fields:
                     label: 'Theme Color'
                     span: auto
                     type: colorpicker
+    actors:
+        label: Actors
+        span: left
+        type: actorbox
