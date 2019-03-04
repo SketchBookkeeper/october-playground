@@ -15,3 +15,9 @@
 1.0.6:
     - 'Created table paulallen_movies_movies_genres_'
     - builder_table_create_paulallen_movies_movies_genres_.php
+1.0.7:
+    - 'Updated table paulallen_movies_'
+    - builder_table_update_paulallen_movies__3.php
+1.0.8:
+    - 'Updated table paulallen_movies_'
+    - builder_table_update_paulallen_movies__4.php
