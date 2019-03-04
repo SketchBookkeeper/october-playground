@@ -43,18 +43,18 @@ fields:
             extension: auto
         span: full
         type: fileupload
-    actors:
-        label: Actors
+    themes:
+        label: Themes
         prompt: 'Add new item'
         span: auto
         type: repeater
         form:
             fields:
-                actor_name:
-                    label: 'Actor Name'
+                theme_name:
+                    label: 'Theme Name'
                     span: auto
                     type: text
-                actor_age:
-                    label: 'Actor Age'
+                theme_color:
+                    label: 'Theme Color'
                     span: auto
-                    type: text
+                    type: colorpicker
