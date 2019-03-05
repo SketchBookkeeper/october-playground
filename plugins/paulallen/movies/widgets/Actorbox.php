@@ -2,8 +2,8 @@
 namespace PaulAllen\Movies\Widgets;
 
 use Backend\Classes\FormWidgetBase;
+use PaulAllen\Movies\Models\Actor;
 use Config;
-// use PaulAllen\Movies\Models\Actor;
 
 class ActorBox extends FormWidgetBase
 {
@@ -19,7 +19,21 @@ class ActorBox extends FormWidgetBase
 
     public function render()
     {
+        $this->prepareVars();
         return $this->makePartial('widget');
+    }
+
+    public function prepareVars()
+    {
+        $this->vars['id'] = $this->model->id;
+        $this->vars['actors'] = Actor::all()->pluck('full_name', 'id');
+        $this->vars['name'] = $this->formField->getName() . '[]';
+
+        if (!empty($this->getLoadValue())) {
+            $this->vars['selectedValues'] = $this->getLoadValue();
+        } else {
+            $this->vars['selectedValues'] = [];
+        }
     }
 
     public function loadAssets()

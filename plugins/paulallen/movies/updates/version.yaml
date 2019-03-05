@@ -24,3 +24,15 @@
 1.0.9:
     - 'Updated table paulallen_movies_'
     - builder_table_update_paulallen_movies__5.php
+1.0.10:
+    - 'Created table paulallen_movies_actors_'
+    - builder_table_create_paulallen_movies_actors_.php
+1.0.11:
+    - 'Updated table paulallen_movies_actors_'
+    - builder_table_update_paulallen_movies_actors_.php
+1.0.12:
+    - 'Created table paulallen_movies_actors_movies'
+    - builder_table_create_paulallen_movies_actors_movies.php
+1.0.13:
+    - 'Updated table paulallen_movies_actors_movies'
+    - builder_table_update_paulallen_movies_actors_movies_.php

@@ -36,6 +36,11 @@ class Movie extends Model
             'PaulAllen\Movies\Models\Genre',
             'table' => 'paulallen_movies_movies_genres_',
             'order' => 'genre_title'
+        ],
+        'actors' => [
+            'PaulAllen\Movies\Models\Actor',
+            'table' => 'paulallen_movies_actors_movies_',
+            'order' => 'name'
         ]
     ];
 

@@ -1,0 +1,10 @@
+name: Actors
+form: $/paulallen/movies/models/actor/fields.yaml
+modelClass: PaulAllen\Movies\Models\Actor
+defaultRedirect: paulallen/movies/actors
+create:
+    redirect: 'paulallen/movies/actors/update/:id'
+    redirectClose: paulallen/movies/actors
+update:
+    redirect: paulallen/movies/actors
+    redirectClose: paulallen/movies/actors

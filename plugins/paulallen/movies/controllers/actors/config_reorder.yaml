@@ -1,0 +1,4 @@
+title: Actors
+modelClass: PaulAllen\Movies\Models\Actor
+toolbar:
+    buttons: reorder_toolbar
