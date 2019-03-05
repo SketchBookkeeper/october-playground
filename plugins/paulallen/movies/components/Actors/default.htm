@@ -1,0 +1,9 @@
+{% set actors = __SELF__.actors %}
+
+{% if actors %}
+<ul>
+    {% for actor in actors %}
+        <li>{{ actor.name }}  {{ actor.lastname }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
