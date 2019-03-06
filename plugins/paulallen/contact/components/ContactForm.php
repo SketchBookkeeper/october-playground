@@ -1,9 +1,10 @@
-<?php
-namespace PaulAllen\Contact\Components;
+<?php namespace PaulAllen\Contact\Components;
 
 use Cms\Classes\ComponentBase;
 use Input;
 use Mail;
+use Validator;
+use Redirect;
 
 class ContactForm extends ComponentBase
 {
@@ -22,6 +23,22 @@ class ContactForm extends ComponentBase
             'email'   => Input::get('email'),
             'content' => Input::get('content')
         ];
+
+        $validation_rules = [
+            'name'    => 'required',
+            'email'   => 'required|email',
+            'content' => 'required'
+        ];
+
+        $validator = Validator::make(
+            $vars,
+            $validation_rules
+        );
+
+        // Bail if fails
+        if ($validator->fails()) {
+            return Redirect::back()->withErrors($validator);
+        }
 
         Mail::send('paulallen.contact::mail.message', $vars, function($message) {
             $message->to('admin@test.com', 'Admin Guy');
