@@ -1,0 +1,6 @@
+plugin:
+    name: 'paulallen.contact::lang.plugin.name'
+    description: 'paulallen.contact::lang.plugin.description'
+    author: 'Paul Allen'
+    icon: oc-icon-envelope-square
+    homepage: ''
