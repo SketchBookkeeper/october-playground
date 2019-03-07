@@ -4,6 +4,7 @@ use Cms\Classes\ComponentBase;
 use Input;
 use Mail;
 use Validator;
+use Flash;
 use Redirect;
 
 class ContactForm extends ComponentBase
@@ -37,11 +38,20 @@ class ContactForm extends ComponentBase
 
         // Bail if fails
         if ($validator->fails()) {
-            return Redirect::back()->withErrors($validator);
+            $errors = $validator->errors();
+
+            foreach ($errors->all() as $error) {
+                Flash::error($error);
+                break;
+            }
+
+            return;
         }
 
         Mail::send('paulallen.contact::mail.message', $vars, function($message) {
             $message->to('admin@test.com', 'Admin Guy');
         });
+
+        Flash::success('Message Sent');
     }
 }

@@ -3,7 +3,6 @@ namespace PaulAllen\Movies\Widgets;
 
 use Backend\Classes\FormWidgetBase;
 use PaulAllen\Movies\Models\Actor;
-use Config;
 
 class ActorBox extends FormWidgetBase
 {
