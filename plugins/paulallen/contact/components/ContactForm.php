@@ -36,16 +36,26 @@ class ContactForm extends ComponentBase
             $validation_rules
         );
 
-        // Bail if fails
+        // Bail if fails validation
         if ($validator->fails()) {
-            $errors = $validator->errors();
+            // One way to do this with flash messages...
 
-            foreach ($errors->all() as $error) {
-                Flash::error($error);
-                break;
-            }
+            // $errors = $validator->errors();
 
-            return;
+            // foreach ($errors->all() as $error) {
+            //     Flash::error($error);
+            //     break;
+            // }
+
+            // return;
+
+            // Or
+            // This will find the element on the page with the Id of 'result'
+            // and inject the contents for 'messages.htm' in that element via
+            // AJAX.
+            return ['#result' => $this->renderPartial('contactform::messages', [
+                'errorMsgs' => $validator->messages()->all(),
+            ])];
         }
 
         Mail::send('paulallen.contact::mail.message', $vars, function($message) {
