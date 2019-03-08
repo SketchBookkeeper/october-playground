@@ -1,0 +1,6 @@
+plugin:
+    name: 'paulallen.profile::lang.plugin.name'
+    description: 'paulallen.profile::lang.plugin.description'
+    author: 'Paul Allen'
+    icon: oc-icon-smile-o
+    homepage: ''
