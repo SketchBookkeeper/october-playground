@@ -30,7 +30,7 @@ class ActorForm extends ComponentBase
         // Validate form inputs.
         $vars = [
             'firstname' => Input::get('firstname'),
-            'lastname'  => Input::get('lastname')
+            'lastname'  => Input::get('lastname'),
         ];
 
         $validation_rules = [

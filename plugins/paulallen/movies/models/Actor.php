@@ -37,6 +37,10 @@ class Actor extends Model
         ]
     ];
 
+    public $attachOne = [
+        'actorImage' => 'System\Models\File'
+    ];
+
     public function getFullNameAttribute()
     {
         return $this->name . ' ' . $this->lastname;
