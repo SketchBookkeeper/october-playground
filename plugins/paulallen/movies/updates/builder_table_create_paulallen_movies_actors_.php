@@ -12,10 +12,10 @@ class BuilderTableCreatePaulallenMoviesActors extends Migration
             $table->engine = 'InnoDB';
             $table->increments('id')->unsigned();
             $table->string('name')->nullable();
-            $table->smallInteger('lastname')->nullable();
+            $table->string('lastname')->nullable();
         });
     }
-    
+
     public function down()
     {
         Schema::dropIfExists('paulallen_movies_actors_');
