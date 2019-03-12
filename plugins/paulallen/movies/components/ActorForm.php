@@ -52,8 +52,8 @@ class ActorForm extends ComponentBase
 
         // Check if this new actor is already in the database.
         $existing_record = Actor::find(1)
-            ->whereRaw( 'LOWER(`name`) like ?', strtolower($vars['firstname']) )
-            ->whereRaw( 'LOWER(`lastname`) like ?', strtolower($vars['lastname']) )
+            ->whereRaw( 'LOWER(`name`) like ?', [strtolower($vars['firstname'])] )
+            ->whereRaw( 'LOWER(`lastname`) like ?', [strtolower($vars['lastname'])] )
             ->get();
 
         if (!$existing_record->isEmpty()) {

@@ -24,6 +24,7 @@ fields:
     year:
         label: Year
         span: left
+        required: 1
         type: text
     poster:
         label: Poster
