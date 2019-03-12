@@ -37,6 +37,10 @@ class ActorBox extends FormWidgetBase
 
     public function getSaveValue($actors)
     {
+        if (!$actors) {
+            return [];
+        }
+
         $actors = array_map(function($actor) {
             if (! is_numeric($actor)) {
                 $actor = explode(' ', $actor);
