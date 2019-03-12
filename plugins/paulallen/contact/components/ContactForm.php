@@ -62,6 +62,7 @@ class ContactForm extends ComponentBase
                 ),
                 'status' => 'failed validation'
             ];
+
         }
 
         Mail::send('paulallen.contact::mail.message', $vars, function($message) {

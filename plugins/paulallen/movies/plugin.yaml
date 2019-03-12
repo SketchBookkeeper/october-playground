@@ -9,6 +9,8 @@ navigation:
         label: Movies
         url: paulallen/movies/movies
         icon: icon-video-camera
+        permissions:
+            - manage_movies
         sideMenu:
             side-menu-item:
                 label: Genres
@@ -18,3 +20,10 @@ navigation:
                 label: Actors
                 url: paulallen/movies/actors
                 icon: icon-star
+permissions:
+    manage_movies:
+        tab: Movies
+        label: 'Manage Movies'
+    delete_movies:
+        tab: Movies
+        label: 'Delete Movies'
