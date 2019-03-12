@@ -27,6 +27,11 @@ class Actor extends Model
     public $rules = [
     ];
 
+    protected $fillable = [
+        'name',
+        'lastname'
+    ];
+
     // Relationships
 
     public $belongsToMany = [
