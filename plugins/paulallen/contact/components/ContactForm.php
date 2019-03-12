@@ -53,9 +53,15 @@ class ContactForm extends ComponentBase
             // This will find the element on the page with the Id of 'result'
             // and inject the contents for 'messages.htm' in that element via
             // AJAX.
-            return ['#result' => $this->renderPartial('contactform::messages', [
-                'errorMsgs' => $validator->messages()->all(),
-            ])];
+            return [
+                '#result' => $this->renderPartial(
+                    'contactform::messages',
+                    [
+                        'errorMsgs' => $validator->messages()->all(),
+                    ]
+                ),
+                'status' => 'failed validation'
+            ];
         }
 
         Mail::send('paulallen.contact::mail.message', $vars, function($message) {
@@ -63,5 +69,10 @@ class ContactForm extends ComponentBase
         });
 
         Flash::success('Message Sent');
+
+        return [
+            '#result' => 'Thanks!, We\'ll get in touch soon',
+            'status'  => 'message sent'
+        ];
     }
 }
