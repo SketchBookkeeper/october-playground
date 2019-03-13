@@ -17,8 +17,14 @@ columns:
         type: partial
         sortable: false
         path: ~/plugins/paulallen/movies/models/movie/_poster.htm
-    # not working?
-    # movie_gallery:
-    #     label: Gallery Image
-    #     type: thumb
-    #     sortable: false
+    created_at:
+        label: 'Created at'
+        type: timetense
+        sortable: true
+    published:
+        label: Published
+        type: switch
+    genres:
+        label: Genres
+        type: partial
+        path: ~/plugins/paulallen/movies/models/movie/_genres.htm

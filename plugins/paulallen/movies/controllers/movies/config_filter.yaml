@@ -1,0 +1,14 @@
+scopes:
+    genres:
+        label: Genre
+        modelClass: PaulAllen\Movies\Models\Genre
+        conditions: id in (select movie_id from paulallen_movies_movies_genres_ where genre_id in (:filtered))
+        nameFrom: genre_title
+    created_at:
+        label: 'Date Range'
+        type: daterange
+        conditions: created_at >= ':after' AND created_at <= ':before'
+    published:
+        label: Published
+        type: checkbox
+        conditions: published = true

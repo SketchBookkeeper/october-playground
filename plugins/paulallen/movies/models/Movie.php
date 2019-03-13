@@ -27,6 +27,15 @@ class Movie extends Model
     public $rules = [
     ];
 
+    protected $fillable = [
+        'name',
+        'slug',
+        'year',
+        'created_at',
+        'published',
+        'genres'
+    ];
+
     protected $jsonable = ['themes'];
 
     // Relationships

@@ -42,3 +42,18 @@
 1.0.15:
     - 'Updated table paulallen_movies_actors_'
     - builder_table_update_paulallen_movies_actors__2.php
+1.0.16:
+    - 'Updated table paulallen_movies_'
+    - builder_table_update_paulallen_movies__6.php
+1.0.17:
+    - 'Updated table paulallen_movies_'
+    - builder_table_update_paulallen_movies__7.php
+1.0.18:
+    - 'Updated table paulallen_movies_'
+    - builder_table_update_paulallen_movies__8.php
+1.0.19:
+    - 'Updated table paulallen_movies_'
+    - builder_table_update_paulallen_movies__9.php
+1.0.20:
+    - 'Updated table paulallen_movies_'
+    - builder_table_update_paulallen_movies__10.php

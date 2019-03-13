@@ -1,0 +1,8 @@
+<?php
+$genres = [];
+
+foreach($value as $item) {
+    $genres[] = $item->genre_title;
+}
+
+echo implode(', ', $genres);
