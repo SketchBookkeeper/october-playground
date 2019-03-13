@@ -1,0 +1,8 @@
+genres:
+    label: Genre
+    view:
+        list: $/paulallen/movies/models/genre/columns.yaml
+        toolbarButtons: add|remove
+    manage:
+        form: $/paulallen/movies/models/genre/fields.yaml
+        showCheckboxes: true

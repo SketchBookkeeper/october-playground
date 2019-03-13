@@ -10,12 +10,6 @@ fields:
             field: name
             type: slug
         type: text
-    genres:
-        label: Relation
-        nameFrom: genre_title
-        descriptionFrom: description
-        span: auto
-        type: relation
     description:
         label: 'paulallen.movies::lang.plugin.description'
         size: large
