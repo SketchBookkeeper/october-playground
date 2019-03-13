@@ -2,7 +2,8 @@
 use PaulAllen\Movies\Models\Movie;
 use PaulAllen\Movies\Models\Actor;
 use PaulAllen\Movies\Models\Genre;
-use \Faker;
+use Faker;
+use Response;
 
 Route::get('/json-movies', function() {
     $count = Input::get('count', 10);
@@ -48,4 +49,14 @@ Route::get('/seed-actors', function() {
     }
 
     return Actor::get();
+});
+
+Route::get('sitemap.xml', function() {
+    $movies = Movie::all();
+    $genres = Genre::all();
+
+    return Response::view(
+        'paulallen.movies::sitemap',
+        ['movies' => $movies, 'genres' => $genres]
+    )->header('Content-Type', 'text/xml');
 });
