@@ -12,3 +12,13 @@ columns:
         label: Slug
         type: text
         sortable: false
+    poster:
+        label: Poster
+        type: partial
+        sortable: false
+        path: ~/plugins/paulallen/movies/models/movie/_poster.htm
+    # not working?
+    # movie_gallery:
+    #     label: Gallery Image
+    #     type: thumb
+    #     sortable: false

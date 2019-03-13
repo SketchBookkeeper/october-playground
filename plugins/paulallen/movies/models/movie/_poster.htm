@@ -1,0 +1,9 @@
+<?php
+use ToughDeveloper\ImageResizer\Classes\Image;
+
+if (isset($value['path'])) {
+    $image = new Image($value['path']);
+    $image->resize(50, 50, ['mode' => 'crop']);
+
+    echo sprintf('<img src="%s" alt="Poster Image">', $image);
+}
