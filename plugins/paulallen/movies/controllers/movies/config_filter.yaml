@@ -1,3 +1,4 @@
+# https://octobercms.com/docs/backend/lists
 scopes:
     genres:
         label: Genre
