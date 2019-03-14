@@ -2,13 +2,13 @@
 
 use PaulAllen\Movies\Models\Movie;
 use October\Rain\Database\Updates\Seeder;
-use Faker;
+use Faker\Factory;
 
 class SeedAllTables extends Seeder
 {
     public function run()
     {
-        $faker = Faker\Factory::create();
+        $faker = Factory::create();
 
         for($i = 0; $i < 100; $i++) {
             $movie_name = $faker->sentence($nbWords = 3, $variableNbWords = true);

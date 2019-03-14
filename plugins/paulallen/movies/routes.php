@@ -2,8 +2,8 @@
 use PaulAllen\Movies\Models\Movie;
 use PaulAllen\Movies\Models\Actor;
 use PaulAllen\Movies\Models\Genre;
-use Faker;
-use Response;
+use Faker\Factory;
+use Illuminate\Support\Facades\Response;
 
 Route::get('/json-movies', function() {
     $count = Input::get('count', 10);
@@ -14,7 +14,7 @@ Route::get('/json-movies', function() {
 Route::get('/seed-movies', function() {
     $count = Input::get('count', 0);
 
-    $faker = Faker\Factory::create();
+    $faker = Factory::create();
 
     for ($i = 0; $i < $count; $i++) {
         $name = $faker->realText($maxNbChars = 20);
@@ -39,7 +39,7 @@ Route::get('/seed-movies', function() {
 Route::get('/seed-actors', function() {
     $count = Input::get('count', 0);
 
-    $faker = Faker\Factory::create();
+    $faker = Factory::create();
 
     for ($i = 0; $i < $count; $i++) {
         Actor::create([
