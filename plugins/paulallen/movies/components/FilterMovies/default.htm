@@ -65,6 +65,16 @@
                         {% endif %}
                     {% endspaceless %}
 
+                    {% if record.genres %}
+                        <div class="clearfix">
+                            {% for genre in record.genres %}
+                                <div class="tag">
+                                    <a href="/genres/{{ genre.slug }}" class="tag__text">{{ genre.genre_title }}</a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
                     <div class="clearfix">{{ html_limit(record.description, 400) }}</div>
                 </li>
             {% else %}

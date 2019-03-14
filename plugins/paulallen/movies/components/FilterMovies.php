@@ -88,7 +88,8 @@ class FilterMovies extends ComponentBase
      */
     protected function movieYears()
     {
-        $years = Movie::get()
+        $years = Movie::orderBy('year', 'desc')
+                    ->get()
                     ->pluck('year')
                     ->unique()
                     ->toArray();
