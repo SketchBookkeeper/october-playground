@@ -13,6 +13,9 @@ class FilterMovies extends ComponentBase
 {
     public $movies;
     public $genres;
+    public $years;
+    public $activeYear;
+    public $activeGenres;
 
     public function componentDetails()
     {
@@ -26,9 +29,15 @@ class FilterMovies extends ComponentBase
     {
         $this->movies = $this->filterMovies();
         $this->genres = Genre::all();
+        $this->years = $this->movieYears();
+        $this->activeGenres = Input::get('genres', []);
+        $this->activeYear = Input::get('year');
     }
 
-    public function filterMovies()
+    /**
+     * Filter Movies
+     */
+    protected function filterMovies()
     {
         $genres = Input::get('genres');
         $year   = Input::get('year');
@@ -43,6 +52,7 @@ class FilterMovies extends ComponentBase
 
         $movies = Movie::when($genres, function($query, $genres) {
             // Pass the variable $genres with variable inheriting to the closure (it's like a callback).
+            // http://php.net/manual/en/functions.anonymous.php
             // https://stackoverflow.com/questions/34896236/laravel-where-has-passing-additional-arguments-to-function
 
             $query->whereHas('genres', function($query) use ($genres) {
@@ -58,12 +68,33 @@ class FilterMovies extends ComponentBase
                 // `paulallen_movies_genre_movie`.`genre_id` where `paulallen_movies_`.`id` =
                 // `paulallen_movies_genre_movie`.`movie_id` and `genre_id` in ('1', '2'))
 
-                $query->whereIn('genre_id', explode(',',$genres));
+                $query->whereIn('genre_id', $genres);
             });
         })
         ->when($year, function($query, $year) {
             $query->where('year', $year);
         })
         ->get();
+
+        return $movies;
+    }
+
+    /**
+     * Movie Years
+     *
+     * Get all the unique years for movies
+     *
+     * @return Array
+     */
+    protected function movieYears()
+    {
+        $years = Movie::get()
+                    ->pluck('year')
+                    ->unique()
+                    ->toArray();
+
+        $years = array_combine($years, $years);
+
+        return $years;
     }
 }

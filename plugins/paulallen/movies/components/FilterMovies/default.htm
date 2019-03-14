@@ -1,22 +1,75 @@
-{% set movies = __SELF__.movies %}
-{% set genres = __SELF__.genres %}
+{% set movies = filtermovies.movies %}
+{% set genres = filtermovies.genres %}
+{% set years = filtermovies.years %}
+{# Currently selected parameters #}
+{% set activeGenres = filtermovies.activeGenres %}
+{% set activeYear = filtermovies.activeYear %}
 
-{# {{ dump() }} #}
+<div class="clearfix gutters">
+    <div class="col xs-col-12 md-col-2">
+        <aside class="xs-p2">
+            {{ form_open() }}
+                <fieldset class="xs-mb3">
+                    {% for genre in genres %}
+                        {% set field_id = 'genre-' ~ genre.id %}
+                        <input
+                            id="{{ field_id }}"
+                            type="checkbox"
+                            name="genres[]"
+                            value="{{ genre.id }}"
+                            class="checkbox"
+                            {% if genre.id in activeGenres %}
+                            checked="checked"
+                            {% endif %}
+                        >
+                        <label for="{{ field_id }}">{{ genre.genre_title }}</label>
+                    {% endfor %}
+                </fieldset>
 
-{{ form_open() }}
-    <fieldset>
-        {% for genre in genres %}
-            {% set field_id = 'genre-' ~ genre.id %}
-            <input
-                id="{{ field_id }}"
-                type="checkbox"
-                name="genres[]"
-                value="{{ genre.id }}"
-                class="checkbox"
-            >
-            <label for="{{ field_id }}">{{ genre.genre_title }}</label>
-        {% endfor %}
-    </fieldset>
+                <select name="year" id="year">
+                    <option value="">Any</option>
 
-    {{ form_submit('Filter') }}
-{{ form_close() }}
+                    {% for year in years %}
+                        <option
+                            value="{{ year }}"
+                            {% if activeYear == year %}
+                            selected="selected"
+                            {% endif %}
+                        >
+                            {{ year }}
+                        </option>
+                    {% endfor %}
+                </select>
+
+                <div class="xs-mt3">
+                    <button type="submit" class="button button--secondary">Filter</button>
+                </div>
+            {{ form_close() }}
+        </aside>
+    </div>
+
+    <div class="col xs-col-12 md-col-10">
+        <ul class="list-unstyled xs-mt3 xs-p3">
+            {% for record in movies %}
+                <li class="xs-mb2 xs-pt2 xs-border-top">
+                    {# Use spaceless tag to remove spaces inside the A tag. #}
+                    {% spaceless %}
+                        {% if record.slug %}
+                            <a href="/movie/{{ record.slug }}">
+                        {% endif %}
+
+                        <h2 class="xs-mb1">{{ record.name }} - {{ record.year }}</h2>
+
+                        {% if record.slug %}
+                            </a>
+                        {% endif %}
+                    {% endspaceless %}
+
+                    <div class="clearfix">{{ html_limit(record.description, 400) }}</div>
+                </li>
+            {% else %}
+                <li class="no-data">No results matched your query</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
