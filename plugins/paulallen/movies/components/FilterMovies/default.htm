@@ -1,0 +1,22 @@
+{% set movies = __SELF__.movies %}
+{% set genres = __SELF__.genres %}
+
+{# {{ dump() }} #}
+
+{{ form_open() }}
+    <fieldset>
+        {% for genre in genres %}
+            {% set field_id = 'genre-' ~ genre.id %}
+            <input
+                id="{{ field_id }}"
+                type="checkbox"
+                name="genres[]"
+                value="{{ genre.id }}"
+                class="checkbox"
+            >
+            <label for="{{ field_id }}">{{ genre.genre_title }}</label>
+        {% endfor %}
+    </fieldset>
+
+    {{ form_submit('Filter') }}
+{{ form_close() }}

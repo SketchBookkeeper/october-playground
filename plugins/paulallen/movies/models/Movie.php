@@ -43,7 +43,7 @@ class Movie extends Model
     public $belongsToMany = [
         'genres' => [
             'PaulAllen\Movies\Models\Genre',
-            'table' => 'paulallen_movies_movies_genres_',
+            'table' => 'paulallen_movies_genre_movie',
             'order' => 'genre_title'
         ],
         'actors' => [

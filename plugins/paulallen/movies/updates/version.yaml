@@ -57,3 +57,6 @@
 1.0.20:
     - 'Updated table paulallen_movies_'
     - builder_table_update_paulallen_movies__10.php
+1.0.21:
+    - 'Updated table paulallen_movies_movies_genres_'
+    - builder_table_update_paulallen_movies_genre_movie.php

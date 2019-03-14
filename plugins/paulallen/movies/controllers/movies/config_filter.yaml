@@ -3,7 +3,7 @@ scopes:
     genres:
         label: Genre
         modelClass: PaulAllen\Movies\Models\Genre
-        conditions: id in (select movie_id from paulallen_movies_movies_genres_ where genre_id in (:filtered))
+        conditions: id in (select movie_id from paulallen_movies_genre_movie where genre_id in (:filtered))
         nameFrom: genre_title
     created_at:
         label: 'Date Range'
