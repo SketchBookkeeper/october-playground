@@ -1,6 +1,7 @@
 {% set movies = filtermovies.movies %}
 {% set genres = filtermovies.genres %}
 {% set years = filtermovies.years %}
+{% set currentPage = movies.currentPage %}
 {# Currently selected parameters #}
 {% set activeGenres = filtermovies.activeGenres %}
 {% set activeYear = filtermovies.activeYear %}
@@ -8,7 +9,7 @@
 <div class="clearfix gutters">
     <div class="col xs-col-12 md-col-2">
         <aside class="xs-p2">
-            {{ form_open() }}
+            <form id="movie-filter" data-request="onFilterMovies">
                 <fieldset class="xs-mb3">
                     {% for genre in genres %}
                         {% set field_id = 'genre-' ~ genre.id %}
@@ -41,45 +42,16 @@
                     {% endfor %}
                 </select>
 
+                <input id="page-number" type="hidden" name="page" value="{{ currentPage }}">
+
                 <div class="xs-mt3">
-                    <button type="submit" class="button button--secondary">Filter</button>
+                    <button id="filter-submit" type="submit" class="button button--secondary">Filter</button>
                 </div>
-            {{ form_close() }}
+            </form>
         </aside>
     </div>
 
-    <div class="col xs-col-12 md-col-10">
-        <ul class="list-unstyled xs-mt3 xs-p3">
-            {% for record in movies %}
-                <li class="xs-mb2 xs-pt2 xs-border-top">
-                    {# Use spaceless tag to remove spaces inside the A tag. #}
-                    {% spaceless %}
-                        {% if record.slug %}
-                            <a href="/movie/{{ record.slug }}">
-                        {% endif %}
-
-                        <h2 class="xs-mb1">{{ record.name }} - {{ record.year }}</h2>
-
-                        {% if record.slug %}
-                            </a>
-                        {% endif %}
-                    {% endspaceless %}
-
-                    {% if record.genres %}
-                        <div class="clearfix">
-                            {% for genre in record.genres %}
-                                <div class="tag">
-                                    <a href="/genres/{{ genre.slug }}" class="tag__text">{{ genre.genre_title }}</a>
-                                </div>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-
-                    <div class="clearfix">{{ html_limit(record.description, 400) }}</div>
-                </li>
-            {% else %}
-                <li class="no-data">No results matched your query</li>
-            {% endfor %}
-        </ul>
+    <div id="movies" class="col xs-col-12 md-col-10">
+        {% partial 'filtermovies::list' movies=movies %}
     </div>
 </div>

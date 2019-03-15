@@ -16,6 +16,7 @@ class FilterMovies extends ComponentBase
     public $years;
     public $activeYear;
     public $activeGenres;
+    protected $per_page = 6;
 
     public function componentDetails()
     {
@@ -36,8 +37,12 @@ class FilterMovies extends ComponentBase
 
     /**
      * Filter Movies
+     *
+     * @param boolean $retry Should function run again if not movies are found.
+     *
+     * @return LengthAwarePaginator
      */
-    protected function filterMovies()
+    protected function filterMovies($retry = true)
     {
         $genres = Input::get('genres');
         $year   = Input::get('year');
@@ -57,16 +62,8 @@ class FilterMovies extends ComponentBase
 
             $query->whereHas('genres', function($query) use ($genres) {
                 // whereHas() allows us to join the tables where genre and movie pivot.
-                // Then we do a IN compare against the genre ids provided
+                // Then we do a IN compare against the genre ids provided.
                 // https://laravel.io/forum/04-07-2014-search-post-by-many-tags
-                //
-                // It all comes out to look like this...
-                //
-                // select * from `paulallen_movies_` where exists
-                // (select * from `paulallen_movies_genres_` inner join `paulallen_movies_genre_movie`
-                // on `paulallen_movies_genres_`.`id` =
-                // `paulallen_movies_genre_movie`.`genre_id` where `paulallen_movies_`.`id` =
-                // `paulallen_movies_genre_movie`.`movie_id` and `genre_id` in ('1', '2'))
 
                 $query->whereIn('genre_id', $genres);
             });
@@ -74,9 +71,29 @@ class FilterMovies extends ComponentBase
         ->when($year, function($query, $year) {
             $query->where('year', $year);
         })
-        ->get();
+        ->paginate($this->per_page);
+
+        // If none are found retry at the first page.
+        if ($retry && $movies->count() <= 0) {
+            Input::merge(['page' => 1]); // Override page input.
+            $movies = $this->filterMovies(false); // Set $retry to false to avoid an endless loop.
+        }
 
         return $movies;
+    }
+
+    /**
+     * On Filter Movies
+     */
+    public function onFilterMovies()
+    {
+        $movies = $this->filterMovies();
+
+        return [
+            '#movies' => $this->renderPartial(
+                'filtermovies::list', ['movies' => $movies]
+            )
+        ];
     }
 
     /**
