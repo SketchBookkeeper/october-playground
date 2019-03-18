@@ -6,6 +6,8 @@ use PaulAllen\Movies\Models\Actor;
 use Input;
 use Validator;
 use Backend\Facades\BackendAuth as Auth;
+use System\Models\File;
+use October\Rain\Support\Facades\Flash;
 
 class ActorForm extends ComponentBase
 {
@@ -29,13 +31,15 @@ class ActorForm extends ComponentBase
 
         // Validate form inputs.
         $vars = [
-            'firstname' => Input::get('firstname'),
-            'lastname'  => Input::get('lastname'),
+            'firstname'  => Input::get('firstname'),
+            'lastname'   => Input::get('lastname'),
+            'actorimage' => Input::file('actorimage')
         ];
 
         $validation_rules = [
-            'firstname' => 'required',
-            'lastname'  => 'required'
+            'firstname'  => 'required',
+            'lastname'   => 'required',
+            'actorimage' => 'image'
         ];
 
         $validator = Validator::make(
@@ -65,14 +69,37 @@ class ActorForm extends ComponentBase
 
         // Passed all the check,
         // Save the new Actor
-        $new_actor           = new Actor;
-        $new_actor->name     = ucfirst($vars['firstname']);
-        $new_actor->lastname = ucfirst($vars['lastname']);
+        $new_actor             = new Actor;
+        $new_actor->name       = ucfirst($vars['firstname']);
+        $new_actor->lastname   = ucfirst($vars['lastname']);
+        $new_actor->actorImage = $vars['actorimage'];
         $new_actor->save();
 
         return [
             'message' => 'Added Actor',
             'type'    => 'success',
+        ];
+    }
+
+    public function onImageUpload()
+    {
+        $image = Input::file('actorimage');
+
+        $validator = Validator::make(
+            [ 'actorimage' => $image ],
+            [ 'actorimage' => 'image' ]
+        );
+
+        if ($validator->fails()) {
+            return [
+                '#image-result' => '<p class="text-red xs-mb1">Please Upload and image.</p>'
+            ];
+        }
+
+        $file  = (new file())->fromPost($image);
+
+        return [
+            '#image-result' => '<img src="' . $file->getThumb(200, 200, ['mode' => 'crop']) . '" class="xs-mb2">'
         ];
     }
 
