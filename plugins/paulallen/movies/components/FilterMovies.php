@@ -4,10 +4,7 @@ namespace PaulAllen\Movies\Components;
 use Cms\Classes\ComponentBase;
 use PaulAllen\Movies\Models\Movie;
 use PaulAllen\Movies\Models\Genre;
-use Request;
-use DB;
 use Input;
-use Validator;
 
 class FilterMovies extends ComponentBase
 {
